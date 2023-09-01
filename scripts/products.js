@@ -1,3 +1,13 @@
+//All the variables
+let productgrid = document.querySelector('.products-grid');
+const cartnumber = document.querySelector('.cart-quantity');
+let cart_quantity = 0;
+
+
+
+
+
+
 // products info on array
 let products = [{
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -61,5 +71,19 @@ products.forEach((e) => {
 
 
 // Showing the product html to website page
-let productgrid = document.querySelector('.products-grid');
+
 productgrid.innerHTML = producthtml;
+const addbutton = document.querySelectorAll('.js-add-to-cart');
+const input_quantity = document.querySelectorAll(".option");
+
+
+
+addbutton.forEach((e) => {
+    e.addEventListener('click', (elem) => {
+        console.log(input_quantity);
+
+        cart_quantity += 1;
+
+        cartnumber.innerHTML = cart_quantity;
+    });
+});

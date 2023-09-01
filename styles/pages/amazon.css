@@ -154,3 +154,14 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+
+
+.clearcart{
+  background-color: brown;
+  padding: 0.5vw 2vw;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 10px;
+  border: 1px solid brown;
+}

@@ -1,7 +1,6 @@
 
 // All variables 
-const addbutton = document.querySelectorAll('.js-add-to-cart');
-const cartnumber = document.querySelector('.cart-quantity');
+
 let quantityvalue = document.querySelectorAll('.option');
 
 
@@ -35,6 +34,6 @@ function addproduct(){
      
     
 
-    cartnumber.innerHTML = cart_quantity;
+    
 
 }
