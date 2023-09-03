@@ -8,9 +8,9 @@ let cart_quantity = 0;
 
 
 
-// products info on array
+// putting products info on array
 let products = [{
-    name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+    name: "Black and Gray Athletic umbrella",
     price: "$10.90",
     image: "images/products/umbrella.jpg"
 },{
@@ -21,6 +21,10 @@ let products = [{
     name: "backpack",
     price: "12.90",
     image: "images/products/backpack.jpg"
+},{
+    name: "electric-glass-and-steel-hot-water-kettle",
+    price: "13.90",
+    image: "images/products/electric-glass-and-steel-hot-water-kettle.webp"
 }]
 
 
@@ -51,9 +55,6 @@ products.forEach((e) => {
         ${e.price}
         </div>
 
-        <div class="product-quantity-container">
-            <input type="number" class="option">
-        </div>
 
         <div class="product-spacer"></div>
 
@@ -62,7 +63,7 @@ products.forEach((e) => {
         Added
         </div>
 
-        <button class="add-to-cart-button button-primary js-add-to-cart">
+        <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name = "${e.name}">
         Add to Cart
         </button>
     </div>
@@ -75,15 +76,66 @@ products.forEach((e) => {
 productgrid.innerHTML = producthtml;
 const addbutton = document.querySelectorAll('.js-add-to-cart');
 const input_quantity = document.querySelectorAll(".option");
+let table = document.querySelector('.table')
 
 
+addbutton.forEach((button) => {
+    
+    
 
-addbutton.forEach((e) => {
-    e.addEventListener('click', (elem) => {
-        console.log(input_quantity);
+    button.addEventListener('click', () => {
+
+        let productname = button.dataset.productName;
+        let matchingitem;
+
+        
+        
+
 
         cart_quantity += 1;
 
         cartnumber.innerHTML = cart_quantity;
+
+        var newrow = document.createElement('tr');
+        newrow.classList.add("newdesign");
+
+        newrow.innerHTML = `
+             <tr>
+                 <th>${productname}</th>
+                 <th><button type = 'button' onclick = "removebutton(this)">Remove</button></th>
+             </tr>
+             `;
+
+
+        function removenewrow(){
+            table.removeChild(newrow);
+        }
+        
+
+        console.log(newrow)
+
+            
+
+        table.appendChild(newrow);
+        
     });
 });
+
+
+function removebutton(button){
+
+    const rowTOremove = button.parentNode.parentNode;
+    rowTOremove.parentNode.removeChild(rowTOremove);
+
+    cart_quantity -= 1;
+
+    cartnumber.innerHTML = cart_quantity;
+
+
+}
+
+
+
+
+
+
